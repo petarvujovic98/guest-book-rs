@@ -1,5 +1,10 @@
-import { Worker, NEAR } from "near-workspaces";
-import test from "ava";
+import { Worker, NEAR, NearAccount } from "near-workspaces";
+import anyTest, { TestFn } from "ava";
+
+const test = anyTest as TestFn<{
+  worker: Worker;
+  accounts: { [name: string]: NearAccount };
+}>;
 
 test.beforeEach(async (t) => {
   // Init the worker and start a Sandbox server
